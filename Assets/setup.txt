@@ -1,0 +1,31 @@
+1) Choose Unity 2021.2.8f1 or higher. 
+2) Create new project with Unity URP template.
+3) Open Build Settings and change the target to Android.
+4) Open PlayerSettings:
+- Toolchain Management
+-- Unckeck "Install toolchain package automatically"
+
+- Package Manager
+-- Check "Enable Preview Packages"
+-- Check "Show Dependencies"
+
+- TextMesh Pro
+-- Click on "Import TMP Essentials"
+
+-XR Plugin Management
+-- Click "Install XR Plugin Management"
+-- Click on "Oculus"
+
+5) Open Package Manager
+-- Check if "XR Plugin Management" is installed
+-- "Add package from git URL" -> "com.unity.xr.interaction.toolkit"
+-- On "XR Interaction Toolkit" -> Import both "Starter Assets" and "XR Device Simulator"
+
+6) Open Project Settings:
+-- Preset Manager
+--- "Add Default Preset" -> "Continuous Move Provider (Action Based)" -> Preset = "XRI Default Continuous Move"
+--- "Add Default Preset" -> "Continuous Turn Provider (Action Based)" -> Preset = "XRI Default Continuous Turn"
+--- "Add Default Preset" -> "XR Controller (Action Based)"
+---- 1st Filter: "left" - Preset = "XRI Default Left Controller"
+---- 2nd Filter: "right" - Preset = "XRI Default Right Controller"
+--- "Add Default Preset" -> "Snap Turn Provider (Action Based)" -> Preset = "XRI Default Snap Turn"
