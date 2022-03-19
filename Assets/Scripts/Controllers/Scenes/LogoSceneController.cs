@@ -8,6 +8,10 @@ namespace Controllers.Scenes
 {
     public class LogoSceneController : MonoBehaviour
     {
+        [Header("Required Elements")]
+        [SerializeField] private GameObject fadeInObject;
+        [SerializeField] private GameObject fadeOutObject;
+
         // State
 
         private bool isDatabaseOk = false;
@@ -22,6 +26,9 @@ namespace Controllers.Scenes
         {
             yield return ExtractDatabase();
             yield return new WaitUntil(() => isDatabaseOk);
+            yield return new WaitForSecondsRealtime(1f);
+            fadeInObject.SetActive(true);
+            yield return new WaitForSecondsRealtime(1f);
             SceneManagerController.CallSceneAsync(SceneManagerController.SceneNames.Classroom);
         }
 
