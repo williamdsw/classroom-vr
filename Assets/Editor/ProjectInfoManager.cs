@@ -5,6 +5,9 @@ using Utilities;
 
 public class ProjectEditorManager
 {
+    /// <summary>
+    /// Get project info to update editor values
+    /// </summary>
     [MenuItem("Project/Update Properties", false, 1)]
     protected static void UpdateProperties()
     {

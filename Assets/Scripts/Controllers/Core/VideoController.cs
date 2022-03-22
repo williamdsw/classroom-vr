@@ -67,6 +67,9 @@ namespace Controllers.Core
             UpdateEllapsedTimeLabel();
         }
 
+        /// <summary>
+        /// Bind event listeners to events
+        /// </summary>
         private void BindEventListeners()
         {
             try
@@ -86,6 +89,9 @@ namespace Controllers.Core
             }
         }
 
+        /// <summary>
+        /// Update current ellapsed time to label
+        /// </summary>
         private void UpdateEllapsedTimeLabel()
         {
             if (!isPlaying) return;
@@ -99,6 +105,9 @@ namespace Controllers.Core
             }
         }
 
+        /// <summary>
+        /// Play or resume a video
+        /// </summary>
         private void OnPlayOrResume()
         {
             isPlaying = !isPlaying;
@@ -113,6 +122,9 @@ namespace Controllers.Core
             playResumeButtonImage.sprite = (!isPlaying ? playSprite : resumeSprite);
         }
 
+        /// <summary>
+        /// Stop the video
+        /// </summary>
         private void OnStop()
         {
             isPlaying = false;
@@ -121,12 +133,18 @@ namespace Controllers.Core
             ellapsedTimeLabel.text = Formatter.GetEllapsedTimeInMinutes(0);
         }
 
+        /// <summary>
+        /// Decelerates video's speed
+        /// </summary>
         private void OnDecelerateVideo()
         {
             videoPlayer.playbackSpeed -= 0.1f;
             UpdateCurrentSpeedLabel();
         }
 
+        /// <summary>
+        /// Acelerates video's speed
+        /// </summary>
         private void OnAcelerateVideo()
         {
             videoPlayer.playbackSpeed += 0.1f;
@@ -134,12 +152,18 @@ namespace Controllers.Core
             UpdateCurrentSpeedLabel();
         }
 
+        /// <summary>
+        /// Mute video sound
+        /// </summary>
         private void OnMute()
         {
             videoPlayerAudioSource.mute = !videoPlayerAudioSource.mute;
             muteButtonImage.sprite = (videoPlayerAudioSource.mute ? volumeOffSprite : volumeOnSprite);
         }
 
+        /// <summary>
+        /// Increase video's volume
+        /// </summary>
         private void OnVolumeUp()
         {
             videoPlayerAudioSource.mute = false;
@@ -148,6 +172,9 @@ namespace Controllers.Core
             UpdateVolumeLabel();
         }
 
+        /// <summary>
+        /// Decrease video's volume
+        /// </summary>
         private void OnVolumeDown()
         {
             videoPlayerAudioSource.mute = false;
@@ -156,6 +183,9 @@ namespace Controllers.Core
             UpdateVolumeLabel();
         }
 
+        /// <summary>
+        /// Toggle video loop feature
+        /// </summary>
         private void OnRepeat()
         {
             videoPlayer.isLooping = !videoPlayer.isLooping;
@@ -164,8 +194,14 @@ namespace Controllers.Core
             repeatButtonImage.color = current;
         }
 
+        /// <summary>
+        /// Show current video's playback speed to a label
+        /// </summary>
         private void UpdateCurrentSpeedLabel() => currentVideoSpeedLabel.text = string.Concat("x", videoPlayer.playbackSpeed.ToString("F1"));
 
+        /// <summary>
+        /// Shows current volume to a label
+        /// </summary>
         private void UpdateVolumeLabel() => currentVolumeLabel.text = Mathf.CeilToInt(videoPlayerAudioSource.volume * 10f).ToString();
     }
 }

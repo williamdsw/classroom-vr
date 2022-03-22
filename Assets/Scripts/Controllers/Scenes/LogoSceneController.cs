@@ -39,7 +39,7 @@ namespace Controllers.Scenes
         {
             if (!FileManager.Exists(Properties.TargetDatabasePath))
             {
-                if (Application.isEditor)
+                if (Application.isEditor || Application.platform == RuntimePlatform.WindowsPlayer)
                 {
                     FileManager.Copy(Properties.StreamingAssetsDatabasePath, Properties.TargetDatabasePath);
                 }
